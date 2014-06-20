@@ -23,4 +23,4 @@ fi
 
 echo "Build running on : $pf"
 
-./buildall.sh -S -d -s boot,cpm,iom,both -p $pf -a i386,hops,sultan,nano,arc
+./buildall.sh -S -d -s -c boot,cpm,iom,both -p $pf -a i386,hops,sultan,nano,arc

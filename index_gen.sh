@@ -22,6 +22,6 @@ clear	#Clear the command line
 ctags -R *
 echo "File list generated"
 echo "Generating cross references"
-cscope -b
+cscope -bRq
 
 exit 0

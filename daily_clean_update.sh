@@ -1,6 +1,6 @@
 buildoption="build"
 alloption="all"
-HOME=/home/$(whoami)/
+HOME=/home/svnayak/
 date >> ~/logs/daily_cvs.log
 
 echo -e "\n Starting update...!\n\n" >> ~/logs/daily_cvs.log
@@ -11,13 +11,13 @@ if [ "$2" == "$alloption" ]; then
    cvs update panos
 fi
 
-for i in Temp Base KT2
-	do
-	echo "Updating $i folder"
-	cd $HOME/Source/$i
-	cvs update panos
-	done
+cd $HOME/Source/Temp/
+echo "Updating 'Temp' folder"
+cvs update panos
 
+cd $HOME/Source/Base/
+echo "Updating 'Base' folder"
+cvs update panos
 
 echo -e "Daily CVS Update     : Done\t\t\t" $(date) >> ~/logs/daily_cvs.log
 
@@ -30,14 +30,12 @@ if [ "$1" == "$buildoption" ]; then
 	sleep 2
 	if [ "$2" == "$alloption" ]; then
 		cd $HOME/Source/Edit/panos/
-		run_now.sh
+		clean_run.sh
 	fi
-	
-	for i in Temp Base KT2
-	do
-		cd $HOME/Source/$i/panos/
-		run_now.sh
-	done
+	cd $HOME/Source/Temp/panos/
+	clean_run.sh
+	cd $HOME/Source/Base/panos/
+	clean_run.sh
 else
 	sleep 2
         clear
@@ -45,4 +43,3 @@ else
 fi
 
 echo -e "Daily CVS Build    : Done\t\t\t" $(date) >> ~/logs/daily_cvs.log
-
