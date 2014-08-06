@@ -8,14 +8,14 @@ echo -e "\n Starting update...!\n\n" >> ~/logs/daily_cvs.log
 if [ "$2" == "$alloption" ]; then
 	cd $HOME/Source/Edit/
    echo "Updating 'Edit' folder"
-   cvs update panos
+   cvs update panos -d
 fi
 
 for i in Temp Base KT2
 	do
 	echo "Updating $i folder"
 	cd $HOME/Source/$i
-	cvs update panos
+	cvs update panos -d
 	done
 
 

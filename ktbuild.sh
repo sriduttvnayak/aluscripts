@@ -1,1 +1,1 @@
-./buildall.sh -c -S -d -s iom -p SASR -a i386
+./buildall.sh -S -d -s iom -p SASR -a i386

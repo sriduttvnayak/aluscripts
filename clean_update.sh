@@ -12,7 +12,7 @@ DIR=panos
 echo -e "Weekly Update :: Checkout	: Started\t\t" $(date) >> ~/weekly.log
 if [ -d "$DIR" ]
 then
-	cvs update panos
+	cvs update panos -d
 else
 	cvs checkout panos
 fi

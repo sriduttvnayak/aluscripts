@@ -10,7 +10,7 @@ for i in Base Network Temp ThirtyTwo
     cd $wsPath/$i
     if [ -d "$DIR" ]
     then
-	cvs update panos
+	cvs update panos -d
     else
 	cvs checkout panos
     fi
