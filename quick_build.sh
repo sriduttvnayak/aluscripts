@@ -17,6 +17,10 @@ elif [ "$1" = "T" -o "$1" = "SAST" ]; then
    pf="SAST"
 elif [ "$1" = "R" -o "$1" = "SASR" -o "$1" = "NGA" ]; then
    pf="SASR"
+elif [ "$1" = "S" -o "$1" = "SASS" ]; then
+   pf="SASS"
+elif [ "$1" = "K" -o "$1" = "SASK" ]; then
+   pf="SASK"
 else
    pf="MTU"
 fi

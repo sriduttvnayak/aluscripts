@@ -9,7 +9,7 @@ fi
 
 echo "Starting to build the cscope files..."
 
-for i in pip bcm agent pmgr iom svcmgr pip bcm bcm_simfw mdadrv oam bcm_hw common iom_api qos pchip_code platform mplsng bcmhost cmp
+for i in pip bcm agent pmgr iom svcmgr pip bcm bcm_simfw mdadrv oam bcm_hw common iom_api qos pchip_code platform mplsng bcmhost cmp chmgr
     do 
 		find $i -name "*.c" -not -name ".#*" -and -not -name "*CVS*"  >> cscope.files
 		find $i -name "*.h" -not -name ".#*" -and -not -name "*CVS*"  >> cscope.files

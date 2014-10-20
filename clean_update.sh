@@ -1,39 +1,17 @@
-date >> ~/weekly.log
+HOME=/home/$(whoami)/
+date > ~/logs/weekly_cvs.log
 
-wsPath=/home/$(whoami)/clean_build/
-buildpath=$wsPath/panos
+echo -e "\n Starting update...!\n\n" >> ~/logs/weekly_cvs.log
 
-cd $wsPath
-rm -rf panos
+for i in Temp Base KT2 Edit 7_0B 7_0F 7_0S 6_0B 6_0S 6_1F 6_1S
+	do
+	echo "Updating $i folder"
+	cd $HOME/Source/$i/panos
+    echo $PWD >> ~/logs/weekly_cvs.log
+	cvs update -d
+    ./buildall.sh -S -d -c >> ~/logs/weekly_cvs.log
+    ./buildall.sh -S -d
+	done
 
-DIR=panos
-
-#CVS Update
-echo -e "Weekly Update :: Checkout	: Started\t\t" $(date) >> ~/weekly.log
-if [ -d "$DIR" ]
-then
-	cvs update panos -d
-else
-	cvs checkout panos
-fi
-echo -e "Weekly Update :: Checkout	: Done\t\t\t" $(date) >> ~/weekly.log
-cp /home/svnayak/Documents/Work/Scripts/prefs.mk $buildpath
-
-#Build All
-echo -e "Weekly Update :: Build		: Started\t\t" $(date) >> ~/weekly.log
-
-cd $buildpath
-$buildpath/buildall.sh -S -d
-echo -e "Weekly Update :: Build		: Done\t\t\t" $(date) >> ~/weekly.log
-
-#CScope Update
-echo -e "Weekly Update :: Cscope		: Started\t\t" $(date) >> ~/weekly.log
-cd $wsPath
-cscope -u -b -R -s panos/
-	# -b Build Cross Reference only, 
-	# -R Run recursively
-	# -u Unconditionally build Cross Reference (considers unchanged files as changed, runs longer)
-	# -s Source Directory for updating
-echo -e "Weekly Update :: Cscope		: Done\t\t\t" $(date) >> ~/weekly.log
-
-exit 0
+echo -e "Daily CVS Update     : Done\t\t\t" $(date) >> ~/logs/weekly_cvs.log
+exit
